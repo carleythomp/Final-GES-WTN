@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayRanSound : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private AudioSource source;
+    [SerializeField] AudioClip[] varSounds;
     void Start()
     {
-        
+        source = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         

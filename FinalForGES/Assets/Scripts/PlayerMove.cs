@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] float speed = 6.0f;
+    [SerializeField] float rotSpeed = 4.0f;
+    CharacterController cc;
     void Start()
     {
-        
+        cc = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(0, Input.GetAxis("Horizontal") * rotSpeed, 0);
+        Vector3 forward = transform.TransformDirection(Vector3.forward);
+        float curSpeed = speed * Input.GetAxis("Vertical");
+        cc.SimpleMove(forward * curSpeed);
     }
 }
